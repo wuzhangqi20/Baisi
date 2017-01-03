@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  Baisi
+//
+//  Created by 吴章琦 on 2016/12/31.
+//  Copyright © 2016年 吴章琦. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+// OC环境
+#ifdef __OBJC__
+
+
+#import "UIView+XQExtension.h"
+//#import "UITabBarItem+XQExtension.h"
+#import "UIBarButtonItem+XQExtension.h"
+
+// 日志
+#ifdef DEBUG
+#define XQLog(...) NSLog(__VA_ARGS__)
+#else 
+#define XQLog(...)
+#endif
+
+#define XQLogFunc XQLog(@"%s", __func__);
+
+// 颜色，参数用括号括起来，以免发生运算符优先级问题
+#define XQColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+#define XQColor(r, g, b) XQColorA((r), (g), (b), 255)
+#define XQRandomColor XQColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+#endif
+
+#endif /* PrefixHeader_pch */
