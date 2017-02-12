@@ -1,0 +1,14 @@
+platform :ios, "9.0"
+
+target ‘Baisi’ do
+
+pod "AFNetworking"
+pod "SDWebImage"
+pod "SVProgressHUD"
+pod "MJExtension"
+pod "MJRefresh"
+pod "DACircularProgress"
+pod "pop"
+pod "NJKWebViewProgress"
+
+end
