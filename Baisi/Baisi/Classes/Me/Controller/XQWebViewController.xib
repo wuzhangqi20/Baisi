@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XQWebViewController">
+            <connections>
+                <outlet property="leftBtn" destination="fqo-SJ-czQ" id="IkD-XF-UY1"/>
+                <outlet property="rightBtn" destination="Ncs-Yx-7BW" id="zW8-JO-QKL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="534-Oj-KlL" id="iFq-Ve-wd6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="534-Oj-KlL">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZc-ME-qqW">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <items>
+                        <barButtonItem image="mine_icon_left" id="fqo-SJ-czQ">
+                            <connections>
+                                <action selector="goback:" destination="-1" id="LjS-I2-Unl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="mine_icon_right" id="Ncs-Yx-7BW">
+                            <connections>
+                                <action selector="goforward:" destination="-1" id="FtO-A3-OPi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="TpG-WY-JbG"/>
+                        <barButtonItem systemItem="refresh" id="M5B-2Q-BP2">
+                            <connections>
+                                <action selector="refresh:" destination="-1" id="2uB-8n-KWi"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="534-Oj-KlL" secondAttribute="trailing" id="0WE-Nx-ool"/>
+                <constraint firstItem="534-Oj-KlL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5uQ-z2-4bv"/>
+                <constraint firstAttribute="bottom" secondItem="fZc-ME-qqW" secondAttribute="bottom" id="Gjo-Br-aem"/>
+                <constraint firstAttribute="trailing" secondItem="fZc-ME-qqW" secondAttribute="trailing" id="Q4j-qp-1jx"/>
+                <constraint firstItem="534-Oj-KlL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ikd-uk-vyV"/>
+                <constraint firstItem="fZc-ME-qqW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pDm-oi-VdC"/>
+                <constraint firstItem="fZc-ME-qqW" firstAttribute="top" secondItem="534-Oj-KlL" secondAttribute="bottom" id="qnt-5A-AJ7"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="mine_icon_left" width="25" height="18"/>
+        <image name="mine_icon_right" width="25" height="18"/>
+    </resources>
+</document>

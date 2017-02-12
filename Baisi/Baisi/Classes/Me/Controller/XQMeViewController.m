@@ -8,48 +8,87 @@
 
 #import "XQMeViewController.h"
 
+#import "XQMeCell.h"
+
+#import "XQMeFooter.h"
+
+#import "XQSettingViewController.h"
 @interface XQMeViewController ()
 
 @end
 
 @implementation XQMeViewController
 
+static NSString * const XQMeCellId = @"cell";
+
+// 封装初始化风格
+- (instancetype)init{
+    return [self initWithStyle:UITableViewStyleGrouped];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self setupNav];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setupTable];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupNav{
+    self.navigationItem.title = @"我的";
+    UIBarButtonItem *moonItem = [UIBarButtonItem itemWithImage:@"mine-moon-icon" highImage:@"mine-moon-icon-click" target:self action:@selector(moonClick)];
+    UIBarButtonItem *settingItem = [UIBarButtonItem itemWithImage:@"mine-setting-icon" highImage:@"mine-setting-icon-click" target:self action:@selector(settingClick)];
+    self.navigationItem.rightBarButtonItems = @[moonItem, settingItem];
+}
+
+- (void)moonClick{
+    XQLogFunc
+}
+
+- (void)settingClick{
+    XQSettingViewController *settingVC = [[XQSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
+}
+
+- (void)setupTable{
+    self.tableView.backgroundColor = XQColor(215, 215, 215);
+    // 注册cell
+    [self.tableView registerClass:[XQMeCell class] forCellReuseIdentifier:XQMeCellId];
+    self.tableView.sectionHeaderHeight = 0;
+    self.tableView.sectionFooterHeight = XQCommonMargin;
+    // 设置内边距
+    self.tableView.contentInset = UIEdgeInsetsMake(XQCommonMargin - 35, 0, -20, 0);
+    
+    self.tableView.tableFooterView = [[XQMeFooter alloc] init];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return 1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    XQMeCell *cell = [tableView dequeueReusableCellWithIdentifier:XQMeCellId forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        cell.textLabel.text = @"登录/注册";
+        cell.imageView.image = [UIImage imageNamed:@"setup-head-default"];
+    }else{
+        cell.textLabel.text = @"离线下载";
+        cell.imageView.image = nil;
+    }
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -8,6 +8,8 @@
 
 #import "XQFriendTrendsViewController.h"
 
+#import "XQLoginRegisterViewController.h"
+
 @interface XQFriendTrendsViewController ()
 
 @end
@@ -16,12 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = XQColor(227, 227, 227);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)loginRegClick:(id)sender {
+    
+    XQLoginRegisterViewController *loginRegVC = [[XQLoginRegisterViewController alloc] init];
+    [self presentViewController:loginRegVC animated:YES completion:nil];    
 }
 
 /*

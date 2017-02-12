@@ -74,4 +74,12 @@
     self.center = point;
 }
 
+- (BOOL)xq_isIntersectsRect:(UIView *)view{
+    // convertRect: toView后面传nil代表是以主window为基准，没传nil是因为怕两个view不在一个window
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    CGRect selfRect = [self convertRect:self.bounds toView:window];
+    CGRect viewRect = [view convertRect:view.bounds toView:window];
+    return CGRectIntersectsRect(selfRect, viewRect);
+}
+
 @end

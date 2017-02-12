@@ -40,10 +40,16 @@
 // 设置所有子控制器
 - (void)setupAllChildVCs{
     
+    
     [self setupChildVC:[[XQEssenceViewController alloc] init] image:@"tabBar_essence_icon" selectedImage:@"tabBar_essence_click_icon" title:@"精华"];
-    [self setupChildVC:[[XQNewViewController alloc] init] image:@"tabBar_new_icon" selectedImage:@"tabBar_new_click_icon" title:@"新帖"];
-    [self setupChildVC:[[XQFriendTrendsViewController alloc] init] image:@"tabBar_friendTrends_icon" selectedImage:@"tabBar_friendTrends_click_icon" title:@"关注"];
+    
     [self setupChildVC:[[XQMeViewController alloc] init] image:@"tabBar_me_icon" selectedImage:@"tabBar_me_click_icon" title:@"我"];
+    
+    [self setupChildVC:[[XQFriendTrendsViewController alloc] init] image:@"tabBar_friendTrends_icon" selectedImage:@"tabBar_friendTrends_click_icon" title:@"关注"];
+    
+    [self setupChildVC:[[XQNewViewController alloc] init] image:@"tabBar_new_icon" selectedImage:@"tabBar_new_click_icon" title:@"新帖"];
+    
+    
     
 }
 

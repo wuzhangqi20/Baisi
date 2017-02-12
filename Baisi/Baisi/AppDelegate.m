@@ -9,27 +9,45 @@
 #import "AppDelegate.h"
 
 #import "XQTabBarController.h"
+#import "XQTopWindow.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UITabBarControllerDelegate>
+
+@property (nonatomic, assign) NSInteger tabBarLastSelectedIndex;
 
 @end
 
 @implementation AppDelegate
 
+#pragma mark - <UITabBarControllerDelegate>
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    if (tabBarController.selectedIndex == self.tabBarLastSelectedIndex) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:XQTabBarButtonDidRepeatClickNotification object:nil];
+    }
+    self.tabBarLastSelectedIndex = tabBarController.selectedIndex;
+}
+
+#pragma mark - <UIApplicationDelegate>
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // 代码设置主窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor redColor];
+//    self.window.backgroundColor = [UIColor redColor];
     
     XQTabBarController *tabBarVC = [[XQTabBarController alloc] init];
+    // 监听tabBarVC的按钮点击
+    tabBarVC.delegate = self;
     
     [self.window setRootViewController:tabBarVC];
 //    self.window.hidden = NO;
     [self.window makeKeyAndVisible];
     
+    [XQTopWindow show];
+    
     return YES;
 }
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

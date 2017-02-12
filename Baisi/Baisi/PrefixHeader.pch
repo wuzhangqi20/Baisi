@@ -19,6 +19,13 @@
 #import "UIView+XQExtension.h"
 //#import "UITabBarItem+XQExtension.h"
 #import "UIBarButtonItem+XQExtension.h"
+#import "UITextField+XQExtension.h"
+#import "XQConst.h"
+#import "NSString+XQExtension.h"
+#import "UIImage+XQExtension.h"
+#import "UIImageView+XQExtension.h"
+#import "NSCalendar+XQExtension.h"
+#import "NSDate+XQExtension.h"
 
 // 日志
 #ifdef DEBUG
@@ -28,6 +35,19 @@
 #endif
 
 #define XQLogFunc XQLog(@"%s", __func__);
+
+// 弱引用
+#define XQWeakSelf __weak typeof(self) weakSelf = self;
+
+// 判断版本
+#define iOS(number) ([UIDevice currentDevice].systemVersion.doubleValue >= (number))
+
+// 将数据写到桌面的plist
+#define XQWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/wuzhangqi/Desktop/%@.plist", filename] atomically:YES];
+
+// 屏幕尺寸
+#define XQScreenH [UIScreen mainScreen].bounds.size.height
+#define XQScreenW [UIScreen mainScreen].bounds.size.width
 
 // 颜色，参数用括号括起来，以免发生运算符优先级问题
 #define XQColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]

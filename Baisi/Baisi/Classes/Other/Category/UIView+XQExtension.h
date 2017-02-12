@@ -19,4 +19,6 @@
 
 + (instancetype)viewFromXib;
 
+- (BOOL)xq_isIntersectsRect:(UIView *)view;
+
 @end
